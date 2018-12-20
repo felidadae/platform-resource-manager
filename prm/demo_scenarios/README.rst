@@ -1,6 +1,7 @@
 Demo scenarios
 ....................
 This document describes how to run demo scenarios on a Apache Mesos/Aurora cluster.
+The commands included in the file allows to run a choosen demo scenario on a single pair of nodes.
 
 Assumptions:
 
@@ -9,15 +10,17 @@ Assumptions:
 - the nodes contains owca.pex file with PRM module included.
 
 
-
-1. Export required environment variables:
+1. Export required environment variables. The variable `REMOTE_IP` should be set to
+   one entry of the hosts defined in `demo_scenarios/common/common.yaml.`.
 
 .. code-block:: sh
 
-    export REMOTE_USER=<user>
-    export REMOTE_IP=<remote_ip>
-    export cinventory=demo_scenarios/common/common.template.yaml     # inventory with list of hosts; please copy template file and fill hosts
-    export playbook=owca/workloads/run_workloads.yaml
+    export cinventory=demo_scenarios/common/common.template.yaml # inventory with list of hosts
+                                                                 #  please copy template file and fill hosts
+    export REMOTE_IP=<remote_ip> # one of the hosts defined in common/common.yaml
+    export REMOTE_USER=<user>    # the ad-hoc ansible commands on $REMOTE_IP machine will be run
+                                 #  by the user $REMOTE_USER
+    export playbook=owca/workloads/run_workloads.yaml # path to owca run_workloads playbook
 
 
 
